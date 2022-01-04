@@ -1,0 +1,43 @@
+<File>
+  <BAQ_details>
+    <Details>
+      <Company>EPIC03</Company>
+      <QueryID>Test</QueryID>
+      <AuthorID>epicor</AuthorID>
+      <Description>Test</Description>
+      <DisplayPhrase>/*
+ * Disclaimer!!!
+ * This is not a real query being executed, but a simplified version for general vision.
+ * Executing it with any other tool may produce a different result.
+ */
+ 
+select 
+	[OrderRel].[Company] as [OrderRel_Company],
+	[OrderRel].[OrderNum] as [OrderRel_OrderNum],
+	[OrderRel].[OrderLine] as [OrderRel_OrderLine],
+	[OrderRel].[OrderRelNum] as [OrderRel_OrderRelNum],
+	[OrderRel].[Make] as [OrderRel_Make],
+	[OrderDtl].[OrderNum] as [OrderDtl_OrderNum],
+	[OrderDtl].[OrderLine] as [OrderDtl_OrderLine],
+	[OrderDtl].[Company] as [OrderDtl_Company],
+	[OrderHed].[Company] as [OrderHed_Company],
+	[OrderHed].[OrderNum] as [OrderHed_OrderNum],
+	[OrderRel].[BuyToOrder] as [OrderRel_BuyToOrder],
+	[OrderRel].[FirmRelease] as [OrderRel_FirmRelease]
+from Erp.OrderRel as OrderRel
+inner join Erp.OrderDtl as OrderDtl on 
+	OrderRel.Company = OrderDtl.Company
+	and OrderRel.OrderNum = OrderDtl.OrderNum
+	and OrderRel.OrderLine = OrderDtl.OrderLine
+inner join Erp.OrderHed as OrderHed on 
+	OrderDtl.Company = OrderHed.Company
+	and OrderDtl.OrderNum = OrderHed.OrderNum
+where (OrderRel.OrderNum = @OrderNum  and OrderRel.OrderLine = @OrderLine  and OrderRel.OrderRelNum = @OrderLine)</DisplayPhrase>
+      <IsGlobal>False</IsGlobal>
+      <IsShared>True</IsShared>
+      <Updatable>True</Updatable>
+      <SysRevID>System.Byte[]</SysRevID>
+      <SysRowID>de93a545-708e-479c-a12c-d563857d4d73</SysRowID>
+    </Details>
+  </BAQ_details>
+</File>

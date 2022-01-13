@@ -5,7 +5,7 @@
       <QueryID>SoftAllocationAll</QueryID>
       <AuthorID>waldrip</AuthorID>
       <Description>Soft Allocation DB - Fabric and Plastic</Description>
-      <DisplayPhrase>/*
+      <DisplayPhrase><![CDATA[/*
  * Disclaimer!!!
  * This is not a real query being executed, but a simplified version for general vision.
  * Executing it with any other tool may produce a different result.
@@ -19,28 +19,16 @@ select
 	[zzMSOM_FBSoftAlloc].[Plant] as [zzMSOM_FBSoftAlloc_Plant],
 	[zzMSOM_FBSoftAlloc].[Qty] as [zzMSOM_FBSoftAlloc_Qty],
 	[zzMSOM_FBSoftAlloc].[Company] as [zzMSOM_FBSoftAlloc_Company],
-	(CharIndex('-', zzMSOM_FBSoftAlloc.POLineNum,1)) as [Calculated_Position],
-	(Case
- When Position &gt; 0 then 
- substring(zzMSOM_FBSoftAlloc.POLineNum, 1 , Position - 1)
- end) as [Calculated_PONumber],
-	(CharIndex('-', zzMSOM_FBSoftAlloc.POLineNum, Position + 1)) as [Calculated_Position2],
-	((Position2 - Position) - 1) as [Calculated_Length],
-	(Case
- When Position &gt; 0 then
- SubString(zzMSOM_FBSoftAlloc.POLineNum, Position + 1, Length)
- end) as [Calculated_POLine],
-	(Case
- When Position &gt; 0 then
- SubString(zzMSOM_FBSoftAlloc.POLineNum, Position2 + 1, 3)
- end) as [Calculated_PORel],
 	[OrderHed].[RequestDate] as [OrderHed_RequestDate],
 	[OrderHed].[EntryPerson] as [OrderHed_EntryPerson],
 	[Customer].[CustID] as [Customer_CustID],
 	[Customer].[Name] as [Customer_Name],
 	[OrderRel].[ReqDate] as [OrderRel_ReqDate],
 	('Fabric') as [Calculated_FabricRcd],
-	[PORel].[DueDate] as [PORel_DueDate]
+	[PORel].[DueDate] as [PORel_DueDate],
+	[zzMSOM_FBSoftAlloc].[PONum] as [zzMSOM_FBSoftAlloc_PONum],
+	[zzMSOM_FBSoftAlloc].[POLine] as [zzMSOM_FBSoftAlloc_POLine],
+	[zzMSOM_FBSoftAlloc].[PORelNum] as [zzMSOM_FBSoftAlloc_PORelNum]
 from Erp.zzMSOM_FBSoftAlloc as zzMSOM_FBSoftAlloc
 left outer join Erp.OrderHed as OrderHed on 
 	zzMSOM_FBSoftAlloc.Company = OrderHed.Company
@@ -72,28 +60,16 @@ select
 	[zzMSOM_MBSoftAlloc].[Plant] as [zzMSOM_MBSoftAlloc_Plant],
 	[zzMSOM_MBSoftAlloc].[Qty] as [zzMSOM_MBSoftAlloc_Qty],
 	[zzMSOM_MBSoftAlloc].[Company] as [zzMSOM_MBSoftAlloc_Company],
-	(CharIndex('-', zzMSOM_MBSoftAlloc.POLineNum,1)) as [Calculated_Position],
-	(Case
- When Position &gt; 0 then 
- substring(zzMSOM_MBSoftAlloc.POLineNum, 1 , Position - 1)
- end) as [Calculated_PONumber],
-	(CharIndex('-', zzMSOM_MBSoftAlloc.POLineNum, Position + 1)) as [Calculated_Position2],
-	((Position2 - Position) - 1) as [Calculated_Length],
-	(Case
- When Position &gt; 0 then
- SubString(zzMSOM_MBSoftAlloc.POLineNum, Position + 1, Length)
- end) as [Calculated_POLine],
-	(Case
- When Position &gt; 0 then
- SubString(zzMSOM_MBSoftAlloc.POLineNum, Position2 + 1, 3)
- end) as [Calculated_PORel],
 	[OrderHed_MB].[RequestDate] as [OrderHed_MB_RequestDate],
 	[OrderHed_MB].[EntryPerson] as [OrderHed_MB_EntryPerson],
 	[Customer_MB].[CustID] as [Customer_MB_CustID],
 	[Customer_MB].[Name] as [Customer_MB_Name],
 	[OrderRel_MB].[ReqDate] as [OrderRel_MB_ReqDate],
 	('Plastic') as [Calculated_PlasticRcd],
-	[PORel_MB].[DueDate] as [PORel_MB_DueDate]
+	[PORel_MB].[DueDate] as [PORel_MB_DueDate],
+	[zzMSOM_MBSoftAlloc].[POLine] as [zzMSOM_MBSoftAlloc_POLine],
+	[zzMSOM_MBSoftAlloc].[PORelNum] as [zzMSOM_MBSoftAlloc_PORelNum],
+	[zzMSOM_MBSoftAlloc].[PONum] as [zzMSOM_MBSoftAlloc_PONum]
 from Erp.zzMSOM_MBSoftAlloc as zzMSOM_MBSoftAlloc
 left outer join dbo.OrderHed as OrderHed_MB on 
 	zzMSOM_MBSoftAlloc.Company = OrderHed_MB.Company
@@ -115,8 +91,7 @@ left outer join Erp.PORel as PORel_MB on
 	and OrderRel_MB.PONum = PORel_MB.PONum
 	and OrderRel_MB.POLine = PORel_MB.POLine
 	and OrderRel_MB.PORelNum = PORel_MB.PORelNum
-where (zzMSOM_MBSoftAlloc.Company = @CurComp)
-order by PONumber, POLine, PORel</DisplayPhrase>
+where (zzMSOM_MBSoftAlloc.Company = @CurComp)]]></DisplayPhrase>
       <IsGlobal>True</IsGlobal>
       <IsShared>True</IsShared>
       <Updatable>False</Updatable>

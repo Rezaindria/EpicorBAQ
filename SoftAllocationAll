@@ -41,15 +41,15 @@ left outer join Erp.OrderRel as OrderRel on
 	and zzMSOM_FBSoftAlloc.OrderNum = OrderRel.OrderNum
 	and zzMSOM_FBSoftAlloc.OrderLine = OrderRel.OrderLine
 	and zzMSOM_FBSoftAlloc.OrderRelease = OrderRel.OrderRelNum
-left outer join Erp.PORel as PORel on 
-	OrderRel.Company = PORel.Company
-	and OrderRel.PONum = PORel.PONum
-	and OrderRel.POLine = PORel.POLine
-	and OrderRel.PORelNum = PORel.PORelNum
 left outer join Erp.OrderDtl as OrderDtl on 
 	zzMSOM_FBSoftAlloc.Company = OrderDtl.Company
 	and zzMSOM_FBSoftAlloc.OrderNum = OrderDtl.OrderNum
 	and zzMSOM_FBSoftAlloc.OrderLine = OrderDtl.OrderLine
+left outer join Erp.PORel as PORel on 
+	zzMSOM_FBSoftAlloc.Company = PORel.Company
+	and zzMSOM_FBSoftAlloc.PONum = PORel.PONum
+	and zzMSOM_FBSoftAlloc.POLine = PORel.POLine
+	and zzMSOM_FBSoftAlloc.PORelNum = PORel.PORelNum
 where (zzMSOM_FBSoftAlloc.Company = @CurComp)
 union
 select 
@@ -87,10 +87,10 @@ left outer join dbo.OrderRel as OrderRel_MB on
 	and zzMSOM_MBSoftAlloc.OrderLine = OrderRel_MB.OrderLine
 	and zzMSOM_MBSoftAlloc.OrderRelease = OrderRel_MB.OrderRelNum
 left outer join Erp.PORel as PORel_MB on 
-	OrderRel_MB.Company = PORel_MB.Company
-	and OrderRel_MB.PONum = PORel_MB.PONum
-	and OrderRel_MB.POLine = PORel_MB.POLine
-	and OrderRel_MB.PORelNum = PORel_MB.PORelNum
+	zzMSOM_MBSoftAlloc.Company = PORel_MB.Company
+	and zzMSOM_MBSoftAlloc.PONum = PORel_MB.PONum
+	and zzMSOM_MBSoftAlloc.POLine = PORel_MB.POLine
+	and zzMSOM_MBSoftAlloc.PORelNum = PORel_MB.PORelNum
 where (zzMSOM_MBSoftAlloc.Company = @CurComp)]]></DisplayPhrase>
       <IsGlobal>True</IsGlobal>
       <IsShared>True</IsShared>

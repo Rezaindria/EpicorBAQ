@@ -28,7 +28,8 @@ select
 	[OrderDtl].[ShortChar02] as [OrderDtl_ShortChar02],
 	[zzMSOM_MBSoftAlloc].[PONum] as [zzMSOM_MBSoftAlloc_PONum],
 	[zzMSOM_MBSoftAlloc].[POLine] as [zzMSOM_MBSoftAlloc_POLine],
-	[zzMSOM_MBSoftAlloc].[PORelNum] as [zzMSOM_MBSoftAlloc_PORelNum]
+	[zzMSOM_MBSoftAlloc].[PORelNum] as [zzMSOM_MBSoftAlloc_PORelNum],
+	[PORel].[DueDate] as [PORel_DueDate]
 from Erp.zzMSOM_MBSoftAlloc as zzMSOM_MBSoftAlloc
 left outer join dbo.OrderHed as OrderHed on 
 	zzMSOM_MBSoftAlloc.Company = OrderHed.Company
@@ -41,6 +42,11 @@ left outer join Erp.OrderRel as OrderRel on
 	and zzMSOM_MBSoftAlloc.OrderNum = OrderRel.OrderNum
 	and zzMSOM_MBSoftAlloc.OrderLine = OrderRel.OrderLine
 	and zzMSOM_MBSoftAlloc.OrderRelease = OrderRel.OrderRelNum
+left outer join Erp.PORel as PORel on 
+	zzMSOM_MBSoftAlloc.Company = PORel.Company
+	and zzMSOM_MBSoftAlloc.PONum = PORel.PONum
+	and zzMSOM_MBSoftAlloc.POLine = PORel.POLine
+	and zzMSOM_MBSoftAlloc.PORelNum = PORel.PORelNum
 where (zzMSOM_MBSoftAlloc.Company = @CurComp)]]></DisplayPhrase>
       <IsGlobal>True</IsGlobal>
       <IsShared>True</IsShared>

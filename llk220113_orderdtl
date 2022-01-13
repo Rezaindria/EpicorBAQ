@@ -1,0 +1,32 @@
+<File>
+  <BAQ_details>
+    <Details>
+      <Company>HA</Company>
+      <QueryID>llk220113_orderdtl</QueryID>
+      <AuthorID>knightl</AuthorID>
+      <Description>orderdtl</Description>
+      <DisplayPhrase><![CDATA[/*
+ * Disclaimer!!!
+ * This is not a real query being executed, but a simplified version for general vision.
+ * Executing it with any other tool may produce a different result.
+ */
+ 
+select 
+	[OrderHed].[OrderNum] as [OrderHed_OrderNum],
+	[OrderDtl].[OrderLine] as [OrderDtl_OrderLine],
+	[OrderDtl].[PartNum] as [OrderDtl_PartNum],
+	[OrderDtl].[CheckBox18] as [OrderDtl_CheckBox18],
+	[OrderDtl].[CheckBox19] as [OrderDtl_CheckBox19]
+from Erp.OrderHed as OrderHed
+inner join Erp.OrderDtl as OrderDtl on 
+	OrderHed.Company = OrderDtl.Company
+	and OrderHed.OrderNum = OrderDtl.OrderNum
+where (OrderHed.OrderDate >= '11/01/2021')]]></DisplayPhrase>
+      <IsGlobal>False</IsGlobal>
+      <IsShared>False</IsShared>
+      <Updatable>False</Updatable>
+      <SysRevID>System.Byte[]</SysRevID>
+      <SysRowID>63f4ac5a-d4eb-4a34-81e5-080c826dfb63</SysRowID>
+    </Details>
+  </BAQ_details>
+</File>

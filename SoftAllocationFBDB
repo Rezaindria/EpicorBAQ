@@ -1,0 +1,63 @@
+<File>
+  <BAQ_details>
+    <Details>
+      <Company>HA</Company>
+      <QueryID>SoftAllocationFBDB</QueryID>
+      <AuthorID>waldrip</AuthorID>
+      <Description>Soft Allocation DB - Fabric Only</Description>
+      <DisplayPhrase><![CDATA[/*
+ * Disclaimer!!!
+ * This is not a real query being executed, but a simplified version for general vision.
+ * Executing it with any other tool may produce a different result.
+ */
+ 
+select 
+	[zzMSOM_FBSoftAlloc].[OrderNum] as [zzMSOM_FBSoftAlloc_OrderNum],
+	[zzMSOM_FBSoftAlloc].[OrderLine] as [zzMSOM_FBSoftAlloc_OrderLine],
+	[zzMSOM_FBSoftAlloc].[OrderRelease] as [zzMSOM_FBSoftAlloc_OrderRelease],
+	[zzMSOM_FBSoftAlloc].[Company] as [zzMSOM_FBSoftAlloc_Company],
+	[OrderHed].[EntryPerson] as [OrderHed_EntryPerson],
+	[Customer].[CustID] as [Customer_CustID],
+	[Customer].[Name] as [Customer_Name],
+	[zzMSOM_FBSoftAlloc].[LotNum] as [zzMSOM_FBSoftAlloc_LotNum],
+	[zzMSOM_FBSoftAlloc].[Qty] as [zzMSOM_FBSoftAlloc_Qty],
+	[zzMSOM_FBSoftAlloc].[Plant] as [zzMSOM_FBSoftAlloc_Plant],
+	[zzMSOM_FBSoftAlloc].[BaseMaterialPartNum] as [zzMSOM_FBSoftAlloc_BaseMaterialPartNum],
+	[zzMSOM_FBSoftAlloc].[Processed] as [zzMSOM_FBSoftAlloc_Processed],
+	[zzMSOM_FBSoftAlloc].[Width] as [zzMSOM_FBSoftAlloc_Width],
+	[zzMSOM_FBSoftAlloc].[Length] as [zzMSOM_FBSoftAlloc_Length],
+	[zzMSOM_FBSoftAlloc].[OtherPartNum] as [zzMSOM_FBSoftAlloc_OtherPartNum],
+	[zzMSOM_FBSoftAlloc].[PONum] as [zzMSOM_FBSoftAlloc_PONum],
+	[zzMSOM_FBSoftAlloc].[POLine] as [zzMSOM_FBSoftAlloc_POLine],
+	[zzMSOM_FBSoftAlloc].[PORelNum] as [zzMSOM_FBSoftAlloc_PORelNum],
+	[PORel].[DueDate] as [PORel_DueDate]
+from Erp.zzMSOM_FBSoftAlloc as zzMSOM_FBSoftAlloc
+left outer join Erp.OrderHed as OrderHed on 
+	zzMSOM_FBSoftAlloc.Company = OrderHed.Company
+	and zzMSOM_FBSoftAlloc.OrderNum = OrderHed.OrderNum
+left outer join Erp.Customer as Customer on 
+	OrderHed.Company = Customer.Company
+	and OrderHed.CustNum = Customer.CustNum
+left outer join Erp.OrderRel as OrderRel on 
+	zzMSOM_FBSoftAlloc.Company = OrderRel.Company
+	and zzMSOM_FBSoftAlloc.OrderNum = OrderRel.OrderNum
+	and zzMSOM_FBSoftAlloc.OrderLine = OrderRel.OrderLine
+	and zzMSOM_FBSoftAlloc.OrderRelease = OrderRel.OrderRelNum
+left outer join Erp.OrderDtl as OrderDtl on 
+	zzMSOM_FBSoftAlloc.Company = OrderDtl.Company
+	and zzMSOM_FBSoftAlloc.OrderNum = OrderDtl.OrderNum
+	and zzMSOM_FBSoftAlloc.OrderLine = OrderDtl.OrderLine
+left outer join Erp.PORel as PORel on 
+	zzMSOM_FBSoftAlloc.Company = PORel.Company
+	and zzMSOM_FBSoftAlloc.PONum = PORel.PONum
+	and zzMSOM_FBSoftAlloc.POLine = PORel.POLine
+	and zzMSOM_FBSoftAlloc.PORelNum = PORel.PORelNum
+where (zzMSOM_FBSoftAlloc.Company = @CurComp)]]></DisplayPhrase>
+      <IsGlobal>True</IsGlobal>
+      <IsShared>True</IsShared>
+      <Updatable>False</Updatable>
+      <SysRevID>System.Byte[]</SysRevID>
+      <SysRowID>22282b08-12ed-4c23-98b8-eeaf4709fc4b</SysRowID>
+    </Details>
+  </BAQ_details>
+</File>

@@ -1,0 +1,42 @@
+<File>
+  <BAQ_details>
+    <Details>
+      <Company>HA</Company>
+      <QueryID>llk220113_PartCost</QueryID>
+      <AuthorID>knightl</AuthorID>
+      <Description>PartCost</Description>
+      <DisplayPhrase><![CDATA[/*
+ * Disclaimer!!!
+ * This is not a real query being executed, but a simplified version for general vision.
+ * Executing it with any other tool may produce a different result.
+ */
+ 
+select 
+	[Part].[PartNum] as [Part_PartNum],
+	[Part].[BasePartNum] as [Part_BasePartNum],
+	[PartCost].[StdLaborCost] as [PartCost_StdLaborCost],
+	[PartCost].[StdBurdenCost] as [PartCost_StdBurdenCost],
+	[PartCost].[StdMaterialCost] as [PartCost_StdMaterialCost],
+	[PartCost].[StdSubContCost] as [PartCost_StdSubContCost],
+	[PartCost].[StdMtlBurCost] as [PartCost_StdMtlBurCost],
+	[Part].[CreatedBy] as [Part_CreatedBy],
+	[Part].[CreatedOn] as [Part_CreatedOn],
+	[Part].[Number04] as [Part_Number04],
+	[Part].[Number05] as [Part_Number05],
+	[Part].[Number06] as [Part_Number06],
+	[Part].[Number07] as [Part_Number07],
+	[Part].[Number11] as [Part_Number11],
+	[Part].[Number12] as [Part_Number12]
+from Erp.Part as Part
+left outer join Erp.PartCost as PartCost on 
+	Part.Company = PartCost.Company
+	and Part.PartNum = PartCost.PartNum
+where (Part.CreatedOn >= '10/01/2021')]]></DisplayPhrase>
+      <IsGlobal>False</IsGlobal>
+      <IsShared>False</IsShared>
+      <Updatable>False</Updatable>
+      <SysRevID>System.Byte[]</SysRevID>
+      <SysRowID>b71f7e26-2e25-49c1-b3b7-71b6c2f7bb2b</SysRowID>
+    </Details>
+  </BAQ_details>
+</File>

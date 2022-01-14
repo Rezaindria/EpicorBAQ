@@ -67,9 +67,9 @@ select
 	[OrderRel_MB].[ReqDate] as [OrderRel_MB_ReqDate],
 	('Plastic') as [Calculated_PlasticRcd],
 	[PORel_MB].[DueDate] as [PORel_MB_DueDate],
+	[zzMSOM_MBSoftAlloc].[PONum] as [zzMSOM_MBSoftAlloc_PONum],
 	[zzMSOM_MBSoftAlloc].[POLine] as [zzMSOM_MBSoftAlloc_POLine],
-	[zzMSOM_MBSoftAlloc].[PORelNum] as [zzMSOM_MBSoftAlloc_PORelNum],
-	[zzMSOM_MBSoftAlloc].[PONum] as [zzMSOM_MBSoftAlloc_PONum]
+	[zzMSOM_MBSoftAlloc].[PORelNum] as [zzMSOM_MBSoftAlloc_PORelNum]
 from Erp.zzMSOM_MBSoftAlloc as zzMSOM_MBSoftAlloc
 left outer join dbo.OrderHed as OrderHed_MB on 
 	zzMSOM_MBSoftAlloc.Company = OrderHed_MB.Company

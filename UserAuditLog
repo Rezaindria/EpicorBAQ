@@ -18,7 +18,7 @@ select
 	[UD24].[ShortChar01] as [UD24_ShortChar01],
 	[UD24].[ShortChar02] as [UD24_ShortChar02]
 from Ice.UD24 as UD24
-inner join Erp.UserFile as UserFile on 
+left outer join Erp.UserFile as UserFile on 
 	UD24.Key2 = UserFile.DcdUserID]]></DisplayPhrase>
       <IsGlobal>False</IsGlobal>
       <IsShared>True</IsShared>

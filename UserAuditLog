@@ -5,7 +5,21 @@
       <QueryID>UserAuditLog</QueryID>
       <AuthorID>domurto</AuthorID>
       <Description>User Audit Log</Description>
-      <DisplayPhrase><![CDATA[]]></DisplayPhrase>
+      <DisplayPhrase><![CDATA[/*
+ * Disclaimer!!!
+ * This is not a real query being executed, but a simplified version for general vision.
+ * Executing it with any other tool may produce a different result.
+ */
+ 
+select 
+	[UD24].[Company] as [UD24_Company],
+	[UD24].[Key2] as [UD24_Key2],
+	[UserFile].[Name] as [UserFile_Name],
+	[UD24].[ShortChar01] as [UD24_ShortChar01],
+	[UD24].[ShortChar02] as [UD24_ShortChar02]
+from Ice.UD24 as UD24
+inner join Erp.UserFile as UserFile on 
+	UD24.Key2 = UserFile.DcdUserID]]></DisplayPhrase>
       <IsGlobal>False</IsGlobal>
       <IsShared>True</IsShared>
       <Updatable>False</Updatable>

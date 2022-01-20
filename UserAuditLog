@@ -1,0 +1,16 @@
+<File>
+  <BAQ_details>
+    <Details>
+      <Company>HA</Company>
+      <QueryID>UserAuditLog</QueryID>
+      <AuthorID>domurto</AuthorID>
+      <Description>User Audit Log</Description>
+      <DisplayPhrase><![CDATA[]]></DisplayPhrase>
+      <IsGlobal>False</IsGlobal>
+      <IsShared>True</IsShared>
+      <Updatable>False</Updatable>
+      <SysRevID>System.Byte[]</SysRevID>
+      <SysRowID>f790cd7d-9fa4-455c-974d-d4eab061a888</SysRowID>
+    </Details>
+  </BAQ_details>
+</File>

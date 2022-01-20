@@ -16,11 +16,12 @@ select
 	[UD24].[Key2] as [UD24_Key2],
 	[UserFile].[Name] as [UserFile_Name],
 	[UD24].[ShortChar01] as [UD24_ShortChar01],
-	[UD24].[ShortChar02] as [UD24_ShortChar02]
+	[UD24].[ShortChar02] as [UD24_ShortChar02],
+	[UD24].[ShortChar03] as [UD24_ShortChar03]
 from Ice.UD24 as UD24
 left outer join Erp.UserFile as UserFile on 
 	UD24.Key2 = UserFile.DcdUserID]]></DisplayPhrase>
-      <IsGlobal>False</IsGlobal>
+      <IsGlobal>True</IsGlobal>
       <IsShared>True</IsShared>
       <Updatable>False</Updatable>
       <SysRevID>System.Byte[]</SysRevID>

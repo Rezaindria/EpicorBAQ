@@ -17,7 +17,9 @@ select
 	[UserFile].[Name] as [UserFile_Name],
 	[UD24].[ShortChar01] as [UD24_ShortChar01],
 	[UD24].[ShortChar02] as [UD24_ShortChar02],
-	[UD24].[ShortChar03] as [UD24_ShortChar03]
+	[UD24].[ShortChar03] as [UD24_ShortChar03],
+	[UD24].[Character01] as [UD24_Character01],
+	[UD24].[ShortChar04] as [UD24_ShortChar04]
 from Ice.UD24 as UD24
 left outer join Erp.UserFile as UserFile on 
 	UD24.Key2 = UserFile.DcdUserID]]></DisplayPhrase>
